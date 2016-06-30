@@ -17,8 +17,19 @@ get '/' do
 end
 
 get '/new' do
+  @post = Post.new
   erb :new
 end
+
+post '/new' do
+  @post = Post.new params[:newpost]
+  if @post.save
+    erb "<h2>Ваш пост сохранен!!</h2>"
+  else
+    @error = @post.errors.full_messages.first
+  erb :new
+  end
+  end
 
 
 
