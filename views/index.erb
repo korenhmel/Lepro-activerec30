@@ -1,9 +1,8 @@
 <h1>Latest Post:</h1>
- <% @results.each do |row| %>
+ <% @posts.each do |row| %>
   <br />
-
+  <p> <%= row['name'] %></p>
   <p> <%= row['content'] %></p>
-  <p> added at: <%= row['created_date'] %></p>
   <a href="/details/<%= row['id'] %>">comments</a>
   <br />
 <% end %>

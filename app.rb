@@ -16,7 +16,8 @@ class Post < ActiveRecord::Base
 end
 
 get '/' do
-  erb "hello World!!"
+  @posts = Post.all
+  erb :index
 end
 
 get '/new' do
