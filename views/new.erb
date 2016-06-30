@@ -1,7 +1,14 @@
-<h1>Add new Post</h1>
+<h2>Добавить новый пост</h2>
 <p>
 <form action="/new" method="POST">
-  <textarea class="form-control" style="width: 800px" rows="6" placeholder="type post here"name="post"></textarea>
+
+  <div class="form-group" style="width: 800px">
+    <label>Название поста:</label>
+    <input name="client[name]" type="text" class="form-control" placeholder="Ваше имя" value="">
+  </div>
+  <label for="textarea">Содержание:</label>
+  <textarea class="form-control" id="textarea" style="width: 800px" rows="6" placeholder="type post here"name="post">
+  </textarea>
   <br/>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

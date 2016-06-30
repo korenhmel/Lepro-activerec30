@@ -16,7 +16,9 @@ get '/' do
   erb "hello World!!"
 end
 
-
+get '/new' do
+  erb :new
+end
 
 
 
