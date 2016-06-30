@@ -35,7 +35,11 @@ post '/new' do
   end
   end
 
-
+get '/details/:id' do
+# post_id = Post.find(params[:id])
+#   erb :details
+  erb "hello world"
+end
 
 
 
