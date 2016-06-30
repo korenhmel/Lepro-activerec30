@@ -9,6 +9,9 @@ require 'sinatra/activerecord'
 set :database, "sqlite3:lepro30.db"
 
 class Post < ActiveRecord::Base
+  validates :name, presence: true, length: {in: 3..30}
+  validates :content, presence: true, length: { minimum: 5 }
+  validates :writer, presence: true
 
 end
 
@@ -24,7 +27,7 @@ end
 post '/new' do
   @post = Post.new params[:newpost]
   if @post.save
-    erb "<h2>Ваш пост сохранен!!</h2>"
+    erb "<h2 style=color:green>Ваш пост сохранен!!</h2>"
   else
     @error = @post.errors.full_messages.first
   erb :new
