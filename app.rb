@@ -15,6 +15,10 @@ class Post < ActiveRecord::Base
 
 end
 
+class Comment < ActiveRecord::Base
+
+end
+
 get '/' do
   @posts = Post.all
   erb :index
@@ -36,9 +40,9 @@ post '/new' do
   end
 
 get '/details/:id' do
-# post_id = Post.find(params[:id])
-#   erb :details
-  erb "hello world"
+ @post_id = Post.find(params[:id])
+   erb :details
+
 end
 
 
