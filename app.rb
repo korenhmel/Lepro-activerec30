@@ -40,11 +40,21 @@ post '/new' do
   end
 
 get '/details/:id' do
- @post_id = Post.find(params[:id])
-   erb :details
 
+ @post_id = Post.find(params[:id])
+ # @post_id = post_id[0]
+ @com = Comment.new
+   erb :details
+  # @com2= Comment.find(post_id: @post_id)
 end
 
+post '/details/:id' do
+  comments = params['user_comments']
+  post_id = params[:id]
+   @com = Comment.new({comment: comments, post_id: params[:id] })
+   @com.save
+  redirect to('/details/'+ post_id)
+end
 
 
 
