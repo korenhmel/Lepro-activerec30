@@ -3,7 +3,9 @@
 <p> <%= @post_id['content'] %></p>
 <br />
 <h4>Comments:</h4>
-
+<% @comments.each do |com| %>
+ <p> <%= com['comment'] %> </p>
+  <% end %>
 
 <form action="/details/<%= @post_id['id'] %>" method="POST">
   <textarea class="form-control" style="width: 800px" rows="6" placeholder="type comments here" name="user_comments"></textarea>

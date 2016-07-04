@@ -8,7 +8,12 @@ require 'sinatra/activerecord'
 
 set :database, "sqlite3:lepro30.db"
 
+after do
+  ActiveRecord::Base.clear_active_connections!
+end
+
 class Post < ActiveRecord::Base
+  # has_many :comments
   validates :name, presence: true, length: {in: 3..30}
   validates :content, presence: true, length: { minimum: 5 }
   validates :writer, presence: true
@@ -16,11 +21,12 @@ class Post < ActiveRecord::Base
 end
 
 class Comment < ActiveRecord::Base
-
+  # belongs_to :post
 end
 
 get '/' do
   @posts = Post.all
+
   erb :index
 end
 
@@ -40,10 +46,11 @@ post '/new' do
   end
 
 get '/details/:id' do
+  post_id = params[:id]
 
- @post_id = Post.find(params[:id])
- # @post_id = post_id[0]
+  @post_id = Post.find(params[:id])
  @com = Comment.new
+  @comments = Comment.where("post_id = ?", post_id)
    erb :details
   # @com2= Comment.find(post_id: @post_id)
 end
