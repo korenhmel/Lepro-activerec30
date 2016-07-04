@@ -3,7 +3,7 @@
   <br />
   <p> <%= row['name'] %></p>
   <p> <%= row['content'] %></p>
-
-  <a href="/details/<%= row['id'] %>">comments </a>
+ <% @comments = Comment.where("post_id = ?", row['id']).count %>
+  <a href="/details/<%= row['id'] %>">comments <%= @comments %> </a>
   <br />
 <% end %>
