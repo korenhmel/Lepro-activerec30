@@ -4,14 +4,15 @@
 
   <div class="form-group" style="width: 800px">
     <label>Название поста:</label>
-    <input name="newpost[name]" type="text" class="form-control" placeholder="Ваше имя" value="">
+    <input name="newpost[name]" type="text" class="form-control" placeholder="название поста" value="<%= @post.name %>">
   </div>
   <label for="textarea">Содержание:</label>
-  <textarea class="form-control" id="textarea" style="width: 800px" rows="20" placeholder="type post here"name="newpost[content]">
+  <textarea class="form-control" id="textarea" style="width: 800px" rows="20" placeholder="type post here" name="newpost[content]" >
+  <%= @post.content %>
   </textarea>
   <div class="form-group" style="width: 400px">
     <label>Автор поста:</label>
-    <input name="newpost[writer]" type="text" class="form-control" placeholder="Ваше имя" value="">
+    <input name="newpost[writer]" type="text" class="form-control" placeholder="Ваше имя" value="<%= @post.writer %>">
   </div>
   <br/>
   <button type="submit" class="btn btn-primary">Submit</button>

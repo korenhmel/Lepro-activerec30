@@ -14,7 +14,7 @@ end
 
 class Post < ActiveRecord::Base
   # has_many :comments
-  validates :name, presence: true, length: {in: 3..30}
+  validates :name, presence: true, length: {in: 3..50}
   validates :content, presence: true, length: { minimum: 5 }
   validates :writer, presence: true
 

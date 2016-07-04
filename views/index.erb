@@ -1,8 +1,9 @@
 <h1>Latest Post:</h1>
  <% @posts.each do |row| %>
   <br />
-  <p> <%= row['name'] %></p>
+  <p><b> <%= row['name'] %></b></p>
   <p> <%= row['content'] %></p>
+  <p> <%= row['writer'] %></p>
  <% @comments = Comment.where("post_id = ?", row['id']).count %>
   <a href="/details/<%= row['id'] %>">comments <%= @comments %> </a>
   <br />
